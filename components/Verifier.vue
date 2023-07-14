@@ -45,18 +45,24 @@ export default {
       this.verifyStatus = "";
     },
     async onDecode(data) {
-      if (data !== "") {
-        this.allowScan = false;
-        alert(data);
-        let value = data[0].rawValue;
-        alert(value);
-        const result = await this.$axios.get(`${this.webService}/validate?response=${value}`);
-        if (result.status !== 200) {
-          console.log(`Failed to verify from service: ${result.status} ${result.statusText}`);
-          return;
+      try {
+        if (data !== "") {
+          this.allowScan = false;
+          let value = data[0].rawValue;
+          const result = await this.$axios.get(`${this.webService}/validate?response=${value}`);
+          if (result.status !== 200) {
+            console.log(`Failed to verify from service: ${result.status} ${result.statusText}`);
+            alert("ERROR", result.statusText);
+            return;
+          }
+          alert(result);
+          alert(result.data.toLowerCase());
+          this.verifyStatus = result.data.toLowerCase() === "valid challenge" ? "YES" : "NO";
         }
-        this.verifyStatus = result.data.toLowerCase() === "valid challenge" ? "YES" : "NO";
+      } catch (err) {
+        alert(err);
       }
+
     }
   }
   
