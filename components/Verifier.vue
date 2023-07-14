@@ -53,6 +53,11 @@ export default {
           console.log(`Failed to verify from service: ${result.status} ${result.statusText}`);
           return;
         }
+
+        alert(result);
+        alert(result.data);
+        alert(result.data.toLowerCase());
+        
         
         this.verifyStatus = result.data.toLowerCase() === "valid challenge" ? "YES" : "NO";
       }
