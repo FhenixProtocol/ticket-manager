@@ -50,11 +50,11 @@ export default {
           this.allowScan = false;
           let value = data[0].rawValue;
           const result = await this.$axios.get(`${this.webService}/validate?response=${value}`);
-          if (result.status !== 200) {
-            console.log(`Failed to verify from service: ${result.status} ${result.statusText}`);
-            alert("ERROR", result.statusText);
-            return;
-          }
+          // if (result.status !== 200) {
+          //   console.log(`Failed to verify from service: ${result.status} ${result.statusText}`);
+          //   alert("ERROR", result.statusText);
+          //   return;
+          // }
           //alert(result);
           //alert(result.data.toLowerCase());
           this.verifyStatus = result.data.toLowerCase() === "valid challenge" ? "YES" : "NO";

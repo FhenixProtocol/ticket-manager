@@ -3,14 +3,13 @@
     <div>
       <img class="logo" src="~/assets/fhenix_logo.svg" />
     </div>
-    <div>
+    <div v-if="!isVerifier">
       <CButton v-if="!isConnected" color="warning"   @click="connect" >Connect Wallet</CButton>
       <div v-else>{{ shortAddress }}</div>
+      <Buyer  v-if="isConnected" ref="buyer"  :webService="webService" :ticket="ticket" @gotKey="getKey" />          
     </div>
-    <template v-if="isConnected">
-      <Verifier v-if="isVerifier" :webService="webService"  />
-      <Buyer ref="buyer" v-else :webService="webService" :ticket="ticket" @gotKey="getKey" />
-    </template>
+    <Verifier v-else :webService="webService"  />          
+    
   </div>
 </template>
 
