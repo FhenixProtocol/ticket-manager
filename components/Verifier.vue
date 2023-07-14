@@ -55,8 +55,8 @@ export default {
             alert("ERROR", result.statusText);
             return;
           }
-          alert(result);
-          alert(result.data.toLowerCase());
+          //alert(result);
+          //alert(result.data.toLowerCase());
           this.verifyStatus = result.data.toLowerCase() === "valid challenge" ? "YES" : "NO";
         }
       } catch (err) {
