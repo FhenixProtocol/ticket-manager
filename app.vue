@@ -26,7 +26,7 @@ import { defineComponent } from '@vue/composition-api'
 import Buyer from './components/Buyer.vue'
 import Verifier from './components/Verifier.vue'
 import { ethers } from "ethers";
-import ABI from './assets/ABI.json';
+import ABI from './assets/abi.json';
 import { CButton } from '@coreui/vue';
 
 import '@coreui/coreui/dist/css/coreui.min.css'
